@@ -1,0 +1,36 @@
+CREATE TABLE salesPeople
+(
+sNum INT PRIMARY KEY,
+sName VARCHAR(50) NOT NULL,
+city VARCHAR(50) NOT NULL,
+Comm DECIMAL(3,2) NOT NULL
+);
+
+CREATE TABLE customers
+(
+cNum INT PRIMARY KEY,
+cName VARCHAR(50) NOT NULL,
+city VARCHAR(50) NOT NULL,
+rating INT,
+sNum INT,
+FOREIGN KEY (sNum) REFERENCES salesPeople(sNum)
+);
+
+CREATE TABLE orders
+(
+oNum INT PRIMARY KEY,
+Amt DECIMAL(7,2) NOT NULL,
+oDate DATE NOT NUll,
+cNum INT,
+sNum INT,
+FOREIGN KEY (cNum) REFERENCES customers(cNum),
+FOREIGN KEY (sNum) REFERENCES salesPeople(sNum)
+);
+
+DESC salespeople;
+DESC customers;
+DESC orders;
+
+ALTER TABLE salespeople ADD COLUMN date_of_birth DATE;
+ALTER TABLE salespeople MODIFY COLUMN date_of_birth DATETIME;
+ALTER TABLE salespeople DROP COLUMN date_of_birth;

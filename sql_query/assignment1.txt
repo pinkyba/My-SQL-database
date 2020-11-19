@@ -1,0 +1,44 @@
+--- (1) ---
+CREATE DATABASE carService;
+USE carService;
+
+--- (5) ---
+DROP TABLE IF EXISTS employee;
+
+--- (2) ---
+CREATE TABLE employee
+(
+empNum INT PRIMARY KEY,
+name VARCHAR(30) NOT NULL,
+date_of_birth DATE DEFAULT 'unknown',
+salary INT NOT NULL, CHECK(salary>10000)
+);
+
+--- (5) ---
+DROP TABLE IF EXISTS company_car;
+
+--- (3), (4) ---
+CREATE TABLE company_car
+(
+register_num INT,
+type_of_car VARCHAR(20) NOT NULL,
+year_of_manufacture INT NOT NULL,
+date_of_last_service DATE NOT NULL,
+next_service INT(20) NOT NULL,
+empNum INT,
+PRIMARY KEY (register_num),
+FOREIGN KEY (empNum) REFERENCES employee(empNum)
+);
+
+--- (6) ---
+SHOW TABLES;
+
+--- (7) ---
+DESC employee;
+DESC company_car;
+
+--- (8) ---
+ALTER TABLE employee ADD COLUMN mobile_num INT(15);
+
+--- (9) ---
+ALTER TABLE employee DROP COLUMN date_of_birth;

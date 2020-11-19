@@ -1,0 +1,23 @@
+----- (1) -----
+SELECT * FROM orders WHERE sNum=1001 and Amt>1500;
+
+----- (2) -----
+SELECT COUNT(cNum) 'no of customer' FROM customers WHERE city='London';
+
+----- (3) -----
+SELECT * from orders WHERE Amt = (SELECT MIN(Amt) FROM orders);
+
+----- (4) -----
+SELECT * FROM customers WHERE cName LIKE 'G%' ORDER BY cName ASC;
+
+----- (5) -----
+SELECT MAX(Amt) 'Maximum ordering amount', oDate 'Date' FROM orders GROUP BY oDate;
+
+----- (6) -----
+SELECT MAX(Amt) 'Maximum ordering amount', C.cName 'Customer Name' FROM orders O INNER JOIN customers C WHERE C.cNum=O.cNum GROUP BY C.cNum;
+
+----- (7) -----
+SELECT rating,cName,cNum FROM customers ORDER BY rating DESC;
+
+----- (8) -----
+SELECT SUM(Amt) 'Total ordering amount', oDate 'Date' FROM orders GROUP BY oDate ORDER BY SUM(Amt) DESC;

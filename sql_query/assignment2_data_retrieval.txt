@@ -1,0 +1,35 @@
+----- (1), (2) -----
+SELECT MAX(salary) 'Maximum salary', MIN(salary) 'Minimum salary' from employee;
+
+----- (3) -----
+SELECT COUNT(empNo) 'no of employee' FROM employee WHERE registerDate>='2013-02-12';
+
+----- (4) -----
+SELECT DISTINCT city FROM employee;
+
+----- (5) -----
+SELECT SUM(salary) FROM employee;
+
+----- (6) -----
+SELECT MAX(salary),city FROM employee GROUP BY city;
+
+----- (7) -----
+SELECT AVG(salary) FROM employee WHERE deptNo=4;
+
+----- (8) -----
+SELECT MAX(salary), MIN(salary), AVG(salary), deptNo 'deptNo'from employee GROUP BY deptNo;
+
+----- (9) -----
+SELECT MIN(dob) 'Oldest employee date',deptNo FROM employee GROUP BY deptNo;
+
+----- (10) -----
+SELECT COUNT(empNo) 'No of employee', salary FROM employee GROUP BY salary;
+
+----- (11) -----
+SELECT COUNT(empNo) 'No of employee', deptNo FROM employee GROUP BY deptNo;
+
+----- (12) -----
+SELECT empName FROM employee WHERE empName LIKE '%hy%' ORDER BY empName ASC;
+
+----- (13) -----
+SELECT empName, city , D.deptName FROM employee E INNER JOIN department D WHERE E.deptNo=D.deptNo ORDER BY empName ASC;

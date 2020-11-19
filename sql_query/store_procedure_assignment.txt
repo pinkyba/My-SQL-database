@@ -1,0 +1,31 @@
+------- (1) --------
+delimiter $$
+CREATE PROCEDURE display_city (name varchar(50))
+BEGIN
+	SELECT city FROM salespeople WHERE sName=name;
+END $$
+CALL display_city('Motika');
+
+------- (2) --------
+delimiter $$
+CREATE PROCEDURE increase_comm (cityName varchar(50), num DECIMAL(3,2))
+BEGIN
+	UPDATE salespeople SET Comm=Comm+num WHERE city=cityName;	
+END $$
+CALL increase_comm('London', 0.5);
+
+------- (3) --------
+delimiter $$
+CREATE PROCEDURE display_name (cusNo INT)
+BEGIN
+	SELECT cName FROM customers WHERE cNum=cusNo;
+END $$
+CALL display_name(2008);
+
+------- (4) --------
+delimiter $$
+CREATE PROCEDURE total_order (date DATE)
+BEGIN
+	SELECT SUM(Amt) FROM orders WHERE oDate=date;
+END $$
+CALL total_order('1990-10-03');

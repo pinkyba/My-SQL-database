@@ -1,0 +1,11 @@
+----- (1) ------
+SELECT cName, city FROM customers  WHERE rating = (SELECT rating from customers where cNum = 2003);
+
+----- (2) ------
+SELECT SUM(Amt), sNum from orders GROUP BY sNum  HAVING SUM(Amt) > (select MAX(Amt) from orders);
+
+----- (3) ------
+DELETE FROM orders WHERE cNum = (SELECT cNum from customers WHERE city='Berlin');
+
+----- (4) ------
+UPDATE customers SET rating  = (SELECT rating FROM (SELECT rating FROM customers WHERE cName='Liu') as t) WHERE city = 'London' and sNum = 1001;
